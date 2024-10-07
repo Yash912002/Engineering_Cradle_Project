@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignUpForm() {
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -16,10 +17,10 @@ export default function SignUpForm() {
 					password,
 				}
 			);
-			
-      if(response.status === 200) {
-        router.push("/products");
-      }
+
+			if (response.status === 200) {
+				router.push("/products");
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -27,7 +28,7 @@ export default function SignUpForm() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-  const router = useRouter();
+	const router = useRouter();
 
 	return (
 		<div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
@@ -68,6 +69,14 @@ export default function SignUpForm() {
 							Sign Up
 						</button>
 					</form>
+					<div className="mt-4 text-center">
+						<span className="text-sm text-gray-600">
+							Account already exists?{" "}
+							<Link href="/login" className="text-blue-500 hover:underline">
+								Login
+							</Link>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
