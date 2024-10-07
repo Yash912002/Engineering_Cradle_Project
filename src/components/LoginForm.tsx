@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -72,6 +73,15 @@ export default function LoginForm() {
 							Log in
 						</button>
 					</form>
+
+					<div className="mt-4 text-center">
+						<span className="text-sm text-gray-600">
+							Create Account{" "}
+							<Link href="/signup" className="text-blue-500 hover:underline">
+								Sign up
+							</Link>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
