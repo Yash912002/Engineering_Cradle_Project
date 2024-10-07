@@ -19,7 +19,7 @@ export default function LoginForm() {
 
 			// console.log(response.data.token);
 
-			const token = localStorage.setItem("token", response.data.token);
+			localStorage.setItem("token", response.data.token);
 
 			if (response.status === 200) {
 				router.push("/products");
