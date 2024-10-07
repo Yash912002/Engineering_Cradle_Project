@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,8 +5,15 @@ import SearchBar from "./SearchBar";
 import Pagination from "./Pagination";
 import ProductList from "./ProductList";
 
+interface Product {
+	id: string;
+	title: string;
+	thumbnail: string;
+	price: string;
+}
+
 export default function Products() {
-	const [products, setProducts] = useState([]);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [email, setEmail] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -57,9 +63,9 @@ export default function Products() {
 	}, []);
 
 	// Filter the products based on search query
-	let filteredProducts = products.filter((product) => (
+	const filteredProducts = products.filter((product) =>
 		product.title.toLowerCase().includes(searchTerm.toLowerCase())
-	));
+	);
 
 	// console.log(currentPage);
 	const indexOfLastProduct = currentPage * productsPerPage;
@@ -82,7 +88,7 @@ export default function Products() {
 		setCurrentPage(pageNumber);
 	};
 
-	const handleSearch = (e:any) => {
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
 	};
 
