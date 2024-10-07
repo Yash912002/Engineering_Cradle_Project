@@ -24,8 +24,8 @@ export default function LoginForm() {
 			if (response.status === 200) {
 				router.push("/products");
 			}
-		} catch (error: any) {
-			console.error(error.message);
+		} catch (error) {
+			console.error(error);
 		}
 	};
 
