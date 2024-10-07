@@ -1,5 +1,9 @@
-// @ts-nocheck
-export default function SearchBar({searchTerm, setSearchTerm}) {
+interface SearchBarProps {
+	searchTerm : string,
+	setSearchTerm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function SearchBar({searchTerm, setSearchTerm}: SearchBarProps) {
   return (
     <div className="flex justify-center">
 				<input
